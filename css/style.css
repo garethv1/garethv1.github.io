@@ -1,0 +1,120 @@
+html {
+    width: 100%;
+    height: 100%;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+    background-color: #fbfab8;
+    color: black;
+}
+
+.navbar {
+    color: black;
+    /* border: 2px solid black; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1%;
+}
+
+.menuHome {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 2em;
+    cursor: pointer;
+    margin-left: .9em;
+}
+
+.menuOther {
+    font-family: sans-serif, system-ui;
+    /* border: 2px solid black; */
+    padding: 16px;
+    cursor: pointer;
+    margin-right: 1em;
+}
+
+.image-container {
+    position: relative;
+}
+
+#homeImage {
+    width: 100%;
+    max-width: 100%;
+    height: 43em;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.text-overlay {
+    position: absolute;
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    padding: 20px; 
+    color: #e2ea71e1; 
+    width: 80%;
+    margin-left: 10%;
+}
+
+.text-overlay h2 {
+    font-size: 5em;
+    margin: 0;
+}
+
+.text-overlay p {
+    font-size: 16px;
+}
+
+
+#descFlex {
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+
+.text-box {
+    flex: 1;
+    background-color: #e2ea71e1;
+    height: 50em;
+}
+
+.text-box2 {
+    margin-left: 2em;
+    margin-right: 16em;
+}
+
+.text-box2 p {
+    font-size: 1.2em;
+    line-height: 1.5;
+}
+
+.text-box h2 {
+    font-size: 5em;
+}
+
+.image-box {
+    flex: 1;
+    height: 50em;
+    object-fit: cover;
+    background-image: url('https://images.squarespace-cdn.com/content/v1/6442ef4842b7395876978966/1682108240120-TN08W1QGRYOPTVJ832W3/Light+Objects+1.jpg');
+    background-size: cover;
+}
+
+.button {
+    background-color: rgb(37, 37, 36);
+    width: auto;
+    color: #e2ea71e1;
+    font-size: 1.4em;
+    margin-top: 3em;
+    padding: 20px;
+    padding-left: 50px;
+    padding-right: 50px;
+    border-radius: 3em;
+    cursor: pointer;
+}
+
