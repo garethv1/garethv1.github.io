@@ -40,7 +40,21 @@
     text-decoration: none;
     margin-left: 1rem;
   }
+
+/* Override for inner pages */
+.navbar.inner-nav {
+  background: white;
+  border-bottom: 1px solid black;
+}
+
+.navbar.inner-nav a {
+  color: black;
+}
   
+  .nav-links {
+    display: flex;
+  }
+
   .menuHome {
     font-size: 2.6rem;
     /* text-transform: uppercase; */
@@ -58,9 +72,6 @@
     margin: 0 20px;
   }
   
-  .nav-links {
-    display: flex;
-  }
   
   /* Hero section */
   .hero {
