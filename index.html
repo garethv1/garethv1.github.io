@@ -5,28 +5,40 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link href="css/style.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <title>Sky Ranch Productions</title>
+  <title >Sky Ranch Productions</title>
 </head>
 <body>
-  <header>
+  <header class="header">
     <nav class="navbar">
-      <a class="menuHome" href="index.html">SKY RANCH PRODUCTIONS</a>
+      <a class="menuHome" href="index.html">Sky Ranch Productions</a>
       <div class="nav-links">
         <a class="menuOther" href="index.html">Home</a>
         <a class="menuOther" href="about.html">About</a>
+        <a class="menuOther" href="Projects.html">Projects</a>
         <a class="menuOther" href="contact.html">Contact</a>
       </div>
     </nav>
   </header>
-
+  
   <main>
-    <section class="hero">
-      <img id="homeImage" src="https://images.squarespace-cdn.com/content/v1/6442ef4842b7395876978966/1682108240014-XDIUNHLV64UVCJ0VC29N/Sleek+Objects+1.jpg" alt="Studio Banner" />
-      <div class="text-overlay">
-        <h2>AUDIO AND VIDEO PRODUCTION</h2>
+    <div class="select-works">
+      <h2>Select Works <a class="view-link" href="#">View Work</a></h2>
+      <div class="works-grid">
+        <div class="work-item">
+          <img src="https://images.squarespace-cdn.com/content/v1/67c7bf3a45c6ed5737cea328/740b268a-c726-4d4b-88ec-5513f0f34231/wolfoftheyear.jpg" alt="Wolf of the Year">
+          <p>Wolf of the Year</p>
+        </div>
+        <div class="work-item">
+          <img src="https://images.squarespace-cdn.com/content/v1/67c7bf3a45c6ed5737cea328/a4cdb764-5640-475b-b281-b0186a7a7670/highflyer.jpg" alt="High Flyer">
+          <p>High Flyer</p>
+        </div>
+        <div class="work-item">
+          <img src="https://images.squarespace-cdn.com/content/v1/67c7bf3a45c6ed5737cea328/6cddca12-613c-449c-81ce-dd3bfdb09978/simverse.jpg" alt="Simulated Universe">
+          <p>Simulated Universe</p>
+        </div>
       </div>
-    </section>
-
+    </div>
+    
     <section class="content">
       <div class="text-box">
         <h2>WHAT I DO</h2>
@@ -45,8 +57,11 @@
     </section>
   </main>
 
-  <footer class="footer">
-    <p>&copy; 2025 Sky Ranch Productions</p>
+  <footer class="site-footer">
+    <div class="footer-title">Music. Film.</div>
+    <div class="footer-bottom">© 2025 Sky Ranch Productions</div>
   </footer>
+  
+  
 </body>
 </html>
