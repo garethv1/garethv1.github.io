@@ -14,14 +14,122 @@
       <div class="nav-links">
         <a class="menuOther" href="index.html">Home</a>
         <a class="menuOther" href="about.html">About</a>
-        <a class="menuOther" href="Projects.html">Projects</a>
+        <a class="menuOther" href="projects.html">Projects</a>
         <a class="menuOther" href="contact.html">Contact</a>
-      </div>
-    </nav>
-  </header>
+    </div>
+</nav>
+</header>
+
+<div class="projects_title">Film</div>
+<div class="video-scroll-container">
+    <div class="video-strip">
+
+        <!-- Vimeo: Wolf of the Year -->
+        <div class="video-wrapper">
+          <a href="https://vimeo.com/927702436" target="_blank">
+            <iframe
+              src="https://player.vimeo.com/video/927702436?autoplay=1&muted=1&loop=1&background=1#t=5s"
+              title="Wolf of the Year"
+              allow="autoplay; fullscreen; picture-in-picture"
+              allowfullscreen></iframe>
+          </a>
+        </div>
+      
+        <!-- Vimeo: Bob Wills -->
+        <div class="video-wrapper">
+          <a href="https://vimeo.com/785100762" target="_blank">
+            <iframe
+              src="https://player.vimeo.com/video/785100762?autoplay=1&muted=1&loop=1&background=1#t=5s"
+              title="Bob Wills"
+              allow="autoplay; fullscreen; picture-in-picture"
+              allowfullscreen></iframe>
+          </a>
+        </div>
+      
+        <!-- YouTube: Cdq9g94WTQQ -->
+        <div class="video-wrapper">
+          <a href="https://www.youtube.com/watch?v=Cdq9g94WTQQ" target="_blank">
+            <iframe
+              src="https://www.youtube.com/embed/Cdq9g94WTQQ?autoplay=1&mute=1&loop=1&playlist=Cdq9g94WTQQ&controls=0&modestbranding=1&rel=0&start=5"
+              title="Cdq9g94WTQQ"
+              allow="autoplay; encrypted-media"
+              allowfullscreen></iframe>
+          </a>
+        </div>
+      
+        <!-- YouTube: o0BMMo--JU0 -->
+        <div class="video-wrapper">
+          <a href="https://www.youtube.com/watch?v=o0BMMo--JU0" target="_blank">
+            <iframe
+              src="https://www.youtube.com/embed/o0BMMo--JU0?autoplay=1&mute=1&loop=1&playlist=o0BMMo--JU0&controls=0&modestbranding=1&rel=0&start=5"
+              title="o0BMMo--JU0"
+              allow="autoplay; encrypted-media"
+              allowfullscreen></iframe>
+          </a>
+        </div>
+      
+      <!-- Vimeo: Gay little faggot -->
+      <div class="video-wrapper">
+          <a href="https://vimeo.com/1073584098" target="_blank">
+            <iframe
+              src="https://player.vimeo.com/video/1073584098?autoplay=1&muted=1&loop=1&background=1#t=5s"
+              title="JayCDudley - Black guy who likes to suck dick (Official Video)"
+              allow="autoplay; fullscreen; picture-in-picture"
+              allowfullscreen></iframe>
+          </a>
+        </div>      
+    </div>
+  </div>
   
-
-
+  <script>
+    const container = document.querySelector('.video-scroll-container');
+    let direction = 1; // 1 = right, -1 = left
+    let speed = 12; // adjust as needed
+    let paused = false;
+    let resumeTimeout;
+  
+    function autoScroll() {
+      if (!container || paused) {
+        requestAnimationFrame(autoScroll);
+        return;
+      }
+  
+      const maxScroll = container.scrollWidth - container.clientWidth;
+      container.scrollLeft += direction * speed;
+  
+      if (container.scrollLeft >= maxScroll) direction = -1;
+      if (container.scrollLeft <= 0) direction = 1;
+  
+      requestAnimationFrame(autoScroll);
+    }
+  
+    // Only pause when horizontal scroll happens
+    container.addEventListener('wheel', (e) => {
+      if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
+        paused = true;
+        clearTimeout(resumeTimeout);
+        resumeTimeout = setTimeout(() => paused = false, 1500);
+      }
+    });
+  
+    // Also pause/resume on touch/drag
+    container.addEventListener('pointerdown', () => {
+      paused = true;
+      clearTimeout(resumeTimeout);
+    });
+  
+    container.addEventListener('pointerup', () => {
+      resumeTimeout = setTimeout(() => paused = false, 1500);
+    });
+  
+    setTimeout(() => {
+    autoScroll();
+  }, 5000);
+ </script>
+  
+  
+  
+  
   <footer class="site-footer">
     <div class="footer-title">Music. Film.</div>
     <div class="footer-bottom">© 2025 Sky Ranch Productions</div>
