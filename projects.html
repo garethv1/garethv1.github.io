@@ -110,49 +110,76 @@
   
   <script>
     const container = document.querySelector('.video-scroll-container');
-    let direction = 1; // 1 = right, -1 = left
-    let speed = 12; // adjust as needed
+    let direction = 1;
+    let speed = 12;
     let paused = false;
     let resumeTimeout;
+    let scrollInterval = null;
   
-    function autoScroll() {
-      if (!container || paused) {
-        requestAnimationFrame(autoScroll);
-        return;
-      }
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
   
+    function autoScrollRAF() {
+      if (!container || paused || isTouchDevice) return;
       const maxScroll = container.scrollWidth - container.clientWidth;
       container.scrollLeft += direction * speed;
   
       if (container.scrollLeft >= maxScroll) direction = -1;
       if (container.scrollLeft <= 0) direction = 1;
   
-      requestAnimationFrame(autoScroll);
+      requestAnimationFrame(autoScrollRAF);
     }
   
-    // Only pause when horizontal scroll happens
+    function startTouchScrollInterval() {
+      if (!isTouchDevice || scrollInterval) return;
+      scrollInterval = setInterval(() => {
+        if (paused) return;
+        const maxScroll = container.scrollWidth - container.clientWidth;
+        container.scrollLeft += direction * speed;
+  
+        if (container.scrollLeft >= maxScroll) direction = -1;
+        if (container.scrollLeft <= 0) direction = 1;
+      }, 40); // ~25fps
+    }
+  
+    function stopTouchScrollInterval() {
+      clearInterval(scrollInterval);
+      scrollInterval = null;
+    }
+  
     container.addEventListener('wheel', (e) => {
       if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
         paused = true;
+        if (isTouchDevice) stopTouchScrollInterval();
         clearTimeout(resumeTimeout);
-        resumeTimeout = setTimeout(() => paused = false, 1500);
+        resumeTimeout = setTimeout(() => {
+          paused = false;
+          if (isTouchDevice) startTouchScrollInterval();
+        }, 1500);
       }
     });
   
-    // Also pause/resume on touch/drag
     container.addEventListener('pointerdown', () => {
       paused = true;
+      if (isTouchDevice) stopTouchScrollInterval();
       clearTimeout(resumeTimeout);
     });
   
     container.addEventListener('pointerup', () => {
-      resumeTimeout = setTimeout(() => paused = false, 1500);
+      resumeTimeout = setTimeout(() => {
+        paused = false;
+        if (isTouchDevice) startTouchScrollInterval();
+      }, 1500);
     });
   
     setTimeout(() => {
-    autoScroll();
-  }, 3000);
- </script>
+      if (isTouchDevice) {
+        startTouchScrollInterval();
+      } else {
+        requestAnimationFrame(autoScrollRAF);
+      }
+    }, 3000);
+  </script>
+  
   
   <script>
     const menuToggle = document.getElementById('menu-toggle');
