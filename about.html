@@ -4,14 +4,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="css/style.css" rel="stylesheet" type="text/css">
+  <link href="css/navbar.css" rel="stylesheet" type="text/css">
   <title>About — Sky Ranch Productions</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
+  <div class="menu-backdrop" id="menu-backdrop"></div>
   <header class="header">
-    <nav class="navbar inner-nav">
-      <a class="menuHome" href="index.html">Sky Ranch Productions</a>
-      <div class="nav-links">
+    <nav class="navbar">
+      <a class="menuHome site-title" href="index.html">Sky Ranch Productions</a>
+  
+      <div class="menu-toggle" id="menu-toggle">
+        <span class="menu-icon">&#9776;</span>
+        <span class="close-icon" id="close-icon">&times;</span>
+      </div>
+  
+      <div class="nav-links" id="nav-links">
         <a class="menuOther" href="index.html">Home</a>
         <a class="menuOther" href="about.html">About</a>
         <a class="menuOther" href="projects.html">Projects</a>
@@ -20,25 +28,68 @@
     </nav>
   </header>
 
+  
+  
+
   <main class="page-section">
     <h1>About</h1>
     <div class="about-grid">
       <div class="about-text">
-        <p>Sky Ranch Productions is led by Gareth V, a producer ...</p>
-        <p><em>More information about the studio, process ...</em></p>
+        <p>Sky Ranch Productions is an artistic collective led by film/music producer Gareth V. 
+          Collaborations include multiple music and film genres with an expanding group of contributers.
+
+          Sky Ranch specializes in turning half-baked ideas into full realized works of art. 
+          With over 15 years in music production and 5 years in cinematography, all aspects of 
+          the creative process are supported by experienced individuals.</p>
       </div>
       <div class="about-image">
-        <img src="https://images.unsplash.com/photo-1526948128573-703ee1aeb6fa?auto=format&fit=crop&w=800&q=80" alt="Studio" />
+        <img src="images/drifter.jpg" alt="Studio" />
       </div>
     </div>
   </main>
-  
+</div>
 
   <footer class="site-footer">
     <div class="footer-title">Music. Film.</div>
     <div class="footer-bottom">© 2025 Sky Ranch Productions</div>
   </footer>
+
+  <script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
+    const closeIcon = document.getElementById('close-icon');
+    const backdrop = document.getElementById('menu-backdrop');
+    const navbar = document.querySelector('.navbar');
+    const header = document.querySelector('.header');
+  
+    function openMenu() {
+      navLinks.classList.add('open');
+      backdrop.classList.add('open');
+      menuToggle.classList.add('open');
+      navbar.classList.add('menu-open');
+      header.classList.add('menu-open');
+    }
+  
+    function closeMenu() {
+      navLinks.classList.remove('open');
+      backdrop.classList.remove('open');
+      menuToggle.classList.remove('open');
+      navbar.classList.remove('menu-open');
+      header.classList.remove('menu-open');
+    }
+  
+    menuToggle.addEventListener('click', () => {
+      const isOpen = navLinks.classList.contains('open');
+      isOpen ? closeMenu() : openMenu();
+    });
+  
+    closeIcon.addEventListener('click', (e) => {
+      e.stopPropagation();
+      closeMenu();
+    });
+  
+    backdrop.addEventListener('click', closeMenu);
+  </script>
   
 </body>
-</div>
 </html>

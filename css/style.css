@@ -8,9 +8,11 @@
     margin: 0;
     padding: 0;
   }
-  html {
-    height: 100%;
+  html, body {
+    max-width: 100%;
+    overflow-x: hidden;
   }
+  
   body {
     font-family: 'Italiana', serif;
     font-style: normal;
@@ -19,40 +21,6 @@
     line-height: 1.6;
     height: 100%;
     padding-top: 75px;
-  }
-  
-  /* Navbar */
-  .navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-    background: #111;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.2rem 2rem;
-  }
-  
-  .navbar a {
-    color: white;
-    text-decoration: none;
-    margin-left: 1rem;
-  }
-
-/* Override for inner pages */
-.navbar.inner-nav {
-  background: white;
-  border-bottom: 1px solid black;
-}
-
-.navbar.inner-nav a {
-  color: black;
-}
-  
-  .nav-links {
-    display: flex;
   }
 
   .menuHome {

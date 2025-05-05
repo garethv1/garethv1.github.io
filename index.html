@@ -2,16 +2,24 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="css/style.css" rel="stylesheet" type="text/css">
+  <link href="css/navbar.css" rel="stylesheet" type="text/css">
+  <title>Sky Ranch Productions</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <title >Sky Ranch Productions</title>
 </head>
 <body>
+  <div class="menu-backdrop" id="menu-backdrop"></div>
   <header class="header">
     <nav class="navbar">
-      <a class="menuHome" href="index.html">Sky Ranch Productions</a>
-      <div class="nav-links">
+      <a class="menuHome site-title" href="index.html">Sky Ranch Productions</a>
+  
+      <div class="menu-toggle" id="menu-toggle">
+        <span class="menu-icon">&#9776;</span>
+        <span class="close-icon" id="close-icon">&times;</span>
+      </div>
+  
+      <div class="nav-links" id="nav-links">
         <a class="menuOther" href="index.html">Home</a>
         <a class="menuOther" href="about.html">About</a>
         <a class="menuOther" href="projects.html">Projects</a>
@@ -25,18 +33,18 @@
       <h2>Select Works <a class="view-link" href="projects.html">View Work</a></h2>
       <div class="main-grid">
     
-        <a href="projects.html" class="work-item">
+        <a href="https://vimeo.com/927702436" class="work-item">
           <img src="https://images.squarespace-cdn.com/content/v1/67c7bf3a45c6ed5737cea328/740b268a-c726-4d4b-88ec-5513f0f34231/wolfoftheyear.jpg" alt="Wolf of the Year">
           <p>Wolf of the Year</p>
         </a>
     
-        <a href="projects.html" class="work-item">
+        <a href="https://vimeo.com/923826886" class="work-item">
           <img src="https://images.squarespace-cdn.com/content/v1/67c7bf3a45c6ed5737cea328/a4cdb764-5640-475b-b281-b0186a7a7670/highflyer.jpg" alt="High Flyer">
           <p>High Flyer</p>
         </a>
     
-        <a href="projects.html" class="work-item">
-          <img src="https://images.squarespace-cdn.com/content/v1/67c7bf3a45c6ed5737cea328/6cddca12-613c-449c-81ce-dd3bfdb09978/simverse.jpg" alt="Simulated Universe">
+        <a href="https://vimeo.com/785100762" class="work-item">
+          <img src="images/bobwills_shot1.png" alt="Simulated Universe">
           <p>Simulated Universe</p>
         </a>
     
@@ -66,6 +74,42 @@
     <div class="footer-bottom">© 2025 Sky Ranch Productions</div>
   </footer>
   
+  <script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
+    const closeIcon = document.getElementById('close-icon');
+    const backdrop = document.getElementById('menu-backdrop');
+    const navbar = document.querySelector('.navbar');
+    const header = document.querySelector('.header');
   
+    function openMenu() {
+      navLinks.classList.add('open');
+      backdrop.classList.add('open');
+      menuToggle.classList.add('open');
+      navbar.classList.add('menu-open');
+      header.classList.add('menu-open');
+    }
+  
+    function closeMenu() {
+      navLinks.classList.remove('open');
+      backdrop.classList.remove('open');
+      menuToggle.classList.remove('open');
+      navbar.classList.remove('menu-open');
+      header.classList.remove('menu-open');
+    }
+  
+    menuToggle.addEventListener('click', () => {
+      const isOpen = navLinks.classList.contains('open');
+      isOpen ? closeMenu() : openMenu();
+    });
+  
+    closeIcon.addEventListener('click', (e) => {
+      e.stopPropagation();
+      closeMenu();
+    });
+  
+    backdrop.addEventListener('click', closeMenu);
+  </script>
+
 </body>
 </html>

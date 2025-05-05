@@ -2,28 +2,47 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="css/style.css" rel="stylesheet" type="text/css">
+  <link href="css/navbar.css" rel="stylesheet" type="text/css">
+  <title>Projects — Sky Ranch Productions</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <title >Sky Ranch Productions</title>
 </head>
 <body>
-  <header class="header">
-    <nav class="navbar inner-nav">
-      <a class="menuHome" href="index.html">Sky Ranch Productions</a>
-      <div class="nav-links">
-        <a class="menuOther" href="index.html">Home</a>
-        <a class="menuOther" href="about.html">About</a>
-        <a class="menuOther" href="projects.html">Projects</a>
-        <a class="menuOther" href="contact.html">Contact</a>
-    </div>
-</nav>
-</header>
+    <div class="menu-backdrop" id="menu-backdrop"></div>
+    <header class="header">
+      <nav class="navbar negative">
+        <a class="menuHome site-title" href="index.html">Sky Ranch Productions</a>
+    
+        <div class="menu-toggle" id="menu-toggle">
+          <span class="menu-icon">&#9776;</span>
+          <span class="close-icon" id="close-icon">&times;</span>
+        </div>
+    
+        <div class="nav-links" id="nav-links">
+          <a class="menuOther" href="index.html">Home</a>
+          <a class="menuOther" href="about.html">About</a>
+          <a class="menuOther" href="projects.html">Projects</a>
+          <a class="menuOther" href="contact.html">Contact</a>
+        </div>
+      </nav>
+    </header>
 
 <div class="projects_title">Film</div>
 <div class="video-scroll-container">
     <div class="video-strip">
 
+        <!-- Vimeo: High Flyer
+        <div class="video-wrapper">
+            <a href="https://vimeo.com/923826886" target="_blank">
+            <iframe
+                src="https://player.vimeo.com/video/923826886?autoplay=1&muted=1&loop=1&background=1#t=30s"
+                title="High Flyer"
+                allow="autoplay; fullscreen; picture-in-picture"
+                allowfullscreen></iframe>
+            </a>
+        </div> -->
+  
         <!-- Vimeo: Wolf of the Year -->
         <div class="video-wrapper">
           <a href="https://vimeo.com/927702436" target="_blank">
@@ -81,6 +100,11 @@
     </div>
   </div>
   
+  <footer class="site-footer">
+    <div class="footer-title">Music. Film.</div>
+    <div class="footer-bottom">© 2025 Sky Ranch Productions</div>
+  </footer>
+  
   <script>
     const container = document.querySelector('.video-scroll-container');
     let direction = 1; // 1 = right, -1 = left
@@ -127,14 +151,41 @@
   }, 3000);
  </script>
   
+  <script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
+    const closeIcon = document.getElementById('close-icon');
+    const backdrop = document.getElementById('menu-backdrop');
+    const navbar = document.querySelector('.navbar');
+    const header = document.querySelector('.header');
   
+    function openMenu() {
+      navLinks.classList.add('open');
+      backdrop.classList.add('open');
+      menuToggle.classList.add('open');
+      navbar.classList.add('menu-open');
+      header.classList.add('menu-open');
+    }
   
+    function closeMenu() {
+      navLinks.classList.remove('open');
+      backdrop.classList.remove('open');
+      menuToggle.classList.remove('open');
+      navbar.classList.remove('menu-open');
+      header.classList.remove('menu-open');
+    }
   
-  <footer class="site-footer">
-    <div class="footer-title">Music. Film.</div>
-    <div class="footer-bottom">© 2025 Sky Ranch Productions</div>
-  </footer>
+    menuToggle.addEventListener('click', () => {
+      const isOpen = navLinks.classList.contains('open');
+      isOpen ? closeMenu() : openMenu();
+    });
   
+    closeIcon.addEventListener('click', (e) => {
+      e.stopPropagation();
+      closeMenu();
+    });
   
+    backdrop.addEventListener('click', closeMenu);
+  </script>
 </body>
 </html>
