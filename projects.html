@@ -111,7 +111,7 @@
   <script>
     const container = document.querySelector('.video-scroll-container');
     let direction = 1;
-    const isMobile = /Mobi|Android/i.test(navigator.userAgent);
+    const isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
     let speed = isMobile ? 24 : 12; // Mobile scrolls faster
     let paused = false;
     let resumeTimeout;
